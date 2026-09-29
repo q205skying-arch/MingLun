@@ -25,10 +25,11 @@
         /* 沈浸式全景 Header */
         header { 
             position: relative;
-            /* 使用南投山景作為背景圖 */
-            background-image: url('https://images.unsplash.com/photo-1572085313466-6710de8d7ba3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            /* 👇 請將引號內的文字，換成你上傳到 GitHub 的照片檔名 */
+            background-image: url('你的照片檔名.jpg');
             background-size: cover;
-            background-position: center;
+            /* 調整照片位置，確保大家的臉都能清楚顯示 */
+            background-position: center 40%;
             color: white; 
             padding: 60px 20px 40px; 
             text-align: center; 
@@ -37,23 +38,23 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             overflow: hidden;
         }
-        /* 毛玻璃暗色遮罩讓文字清楚 */
+        /* 毛玻璃暗色遮罩讓文字清楚，調整透明度讓照片更亮 */
         header::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(45, 62, 80, 0.45);
-            backdrop-filter: blur(2px);
+            background: rgba(30, 45, 60, 0.35);
+            backdrop-filter: blur(1px);
             z-index: 1;
         }
-        header h1 { margin: 0; font-size: 1.8em; font-weight: 700; letter-spacing: 1px; position: relative; z-index: 2; text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
-        header p { margin: 10px 0 0; font-size: 1.05em; font-weight: 400; position: relative; z-index: 2; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); opacity: 0.95; }
+        header h1 { margin: 0; font-size: 1.8em; font-weight: 700; letter-spacing: 1px; position: relative; z-index: 2; text-shadow: 1px 1px 6px rgba(0,0,0,0.6); }
+        header p { margin: 10px 0 0; font-size: 1.05em; font-weight: 400; position: relative; z-index: 2; text-shadow: 1px 1px 5px rgba(0,0,0,0.6); opacity: 0.95; }
         
         .container { 
             padding: 20px 15px; 
             max-width: 600px; 
             margin: auto; 
-            padding-bottom: 80px; /* 留空間給懸浮按鈕 */
+            padding-bottom: 80px; 
         }
         .day-card { 
             background: var(--card-bg); 
@@ -158,7 +159,7 @@
             font-size: 22px;
             box-shadow: 0 4px 15px rgba(79, 138, 139, 0.4);
             cursor: pointer;
-            display: none; /* 預設隱藏 */
+            display: none; 
             align-items: center;
             justify-content: center;
             z-index: 1000;
@@ -176,7 +177,7 @@
 <body>
     <header class="fade-in">
         <h1>😈埔里兩天一夜😈</h1>
-        <p>10/3 (六) - 10/4 (日) | </p>
+        <p>10/3 (六) - 10/4 (日) </p>
     </header>
     
     <div class="container">
@@ -289,6 +290,15 @@
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=妮娜巧克力夢想城堡" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
+                </div>
+                
+                <!-- 補回剛剛不小心漏掉的最後一個行程 -->
+                <div class="timeline-item">
+                    <div class="time">15:30</div>
+                    <div class="title">🎵 敲敲木工房 (KOKOMU)</div>
+                    <div class="desc">體驗音樂盒 DIY，帶著滿滿回憶準備返家。</div>
+                    <div class="action-buttons">
+                        <a href="https://www.google.com/maps/search/?api=1&query=敲敲木工房" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
                 </div>
             </div>
