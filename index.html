@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>埔里兩天一夜遊</title>
+    <title>埔里兩天一夜親子遊</title>
     <style>
         :root {
-            --primary: #4f8a8b; /* 森林綠 */
-            --secondary: #e57373; /* 暖橘紅 */
-            --bg-color: #f0f4f8;
+            --primary: #4f8a8b; 
+            --secondary: #e57373; 
+            --bg-color: #f4f7f6;
             --card-bg: #ffffff;
             --text-main: #2d3748;
             --text-muted: #718096;
@@ -21,23 +21,39 @@
             padding: 0; 
             -webkit-font-smoothing: antialiased;
         }
+        
+        /* 沈浸式全景 Header */
         header { 
-            background: linear-gradient(135deg, #4f8a8b 0%, #3b696a 100%); 
+            position: relative;
+            /* 使用南投山景作為背景圖 */
+            background-image: url('https://images.unsplash.com/photo-1572085313466-6710de8d7ba3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
             color: white; 
-            padding: 45px 20px 35px; 
+            padding: 60px 20px 40px; 
             text-align: center; 
             border-bottom-left-radius: 30px;
             border-bottom-right-radius: 30px;
-            box-shadow: 0 4px 15px rgba(79, 138, 139, 0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
         }
-        header h1 { margin: 0; font-size: 1.8em; font-weight: 700; letter-spacing: 1px; }
-        header p { margin: 10px 0 0; font-size: 1.05em; opacity: 0.9; font-weight: 300; }
+        /* 毛玻璃暗色遮罩讓文字清楚 */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(45, 62, 80, 0.45);
+            backdrop-filter: blur(2px);
+            z-index: 1;
+        }
+        header h1 { margin: 0; font-size: 1.8em; font-weight: 700; letter-spacing: 1px; position: relative; z-index: 2; text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
+        header p { margin: 10px 0 0; font-size: 1.05em; font-weight: 400; position: relative; z-index: 2; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); opacity: 0.95; }
         
         .container { 
             padding: 20px 15px; 
             max-width: 600px; 
             margin: auto; 
-            padding-bottom: 60px; 
+            padding-bottom: 80px; /* 留空間給懸浮按鈕 */
         }
         .day-card { 
             background: var(--card-bg); 
@@ -63,15 +79,16 @@
             align-items: center;
         }
         
+        /* 時間軸設計 */
         .timeline {
             position: relative;
-            padding-left: 20px;
+            padding-left: 18px;
             margin-top: 25px;
         }
         .timeline::before {
             content: '';
             position: absolute;
-            left: 5px;
+            left: 3px;
             top: 5px;
             bottom: 0;
             width: 2px;
@@ -80,7 +97,7 @@
         }
         
         .timeline-item { 
-            margin-bottom: 30px; 
+            margin-bottom: 35px; 
             position: relative; 
         }
         .timeline-item:last-child {
@@ -89,63 +106,91 @@
         .timeline-item::before { 
             content: ''; 
             position: absolute; 
-            left: -21px; 
+            left: -22px; 
             top: 4px; 
-            width: 14px; 
-            height: 14px; 
+            width: 12px; 
+            height: 12px; 
             background-color: var(--primary); 
             border: 3px solid var(--card-bg); 
             border-radius: 50%; 
             box-shadow: 0 0 0 2px rgba(79, 138, 139, 0.2);
         }
+
+        /* 景點縮圖與標題排版 */
+        .item-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .thumbnail {
+            width: 65px;
+            height: 65px;
+            border-radius: 14px;
+            object-fit: cover;
+            margin-right: 15px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            background-color: #f0f0f0;
+        }
+        .title-group {
+            display: flex;
+            flex-direction: column;
+        }
         
-        .time { font-weight: 700; color: var(--secondary); font-size: 1.1em; margin-bottom: 4px; letter-spacing: 0.5px; }
-        .title { font-weight: 700; font-size: 1.2em; margin: 0 0 6px 0; color: var(--text-main); }
+        .time { font-weight: 700; color: var(--secondary); font-size: 1.05em; margin-bottom: 2px; letter-spacing: 0.5px; }
+        .title { font-weight: 700; font-size: 1.2em; margin: 0; color: var(--text-main); }
         .desc { font-size: 0.95em; color: var(--text-muted); margin: 0 0 12px 0; line-height: 1.6; }
         
+        /* 按鈕設計 */
         .action-buttons {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
-        
         a.btn { 
             display: inline-flex; 
             align-items: center;
             justify-content: center;
-            padding: 10px 18px; 
+            padding: 8px 16px; 
             text-decoration: none; 
-            border-radius: 30px; 
+            border-radius: 20px; 
             font-size: 0.9em; 
             font-weight: 600; 
-            transition: transform 0.1s, box-shadow 0.2s;
+            transition: transform 0.1s, background-color 0.2s;
         }
-        a.btn:active { transform: scale(0.95); } /* 按下時的縮放回饋 */
+        a.btn:active { transform: scale(0.95); }
         
-        a.map-btn { 
-            background-color: #edf2f7; 
-            color: #4a5568; 
-        }
+        a.map-btn { background-color: #edf2f7; color: #4a5568; }
         a.map-btn:hover { background-color: #e2e8f0; }
         
-        a.call-btn { 
-            background-color: var(--secondary); 
-            color: white; 
-            box-shadow: 0 4px 10px rgba(229, 115, 115, 0.3);
-        }
+        a.call-btn { background-color: var(--secondary); color: white; box-shadow: 0 4px 10px rgba(229, 115, 115, 0.2); }
         
+        /* 返回頂部按鈕 (FAB) */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(79, 138, 139, 0.4);
+            cursor: pointer;
+            display: none; /* 預設隱藏 */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+        #backToTopBtn:active { transform: scale(0.9); }
+
         /* 進場微動畫 */
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(15px);
-        }
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; transform: translateY(15px); }
         .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.3s; }
-        
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .delay-2 { animation-delay: 0.2s; }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -161,8 +206,13 @@
             
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="time">07:00</div>
-                    <div class="title">📞 預訂大成黑糖饅頭</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="饅頭" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">07:00</div>
+                            <div class="title">預訂大成黑糖饅頭</div>
+                        </div>
+                    </div>
                     <div class="desc">記得打電話預留，避免現場賣完。</div>
                     <div class="action-buttons">
                         <a href="tel:0492912898" class="btn call-btn">📞 撥打電話</a>
@@ -170,17 +220,27 @@
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="time">08:00</div>
-                    <div class="title">🚗 埔里遊客中心 (集合)</div>
-                    <div class="desc">第一站先租腳踏車（免費三小時），沿著自行車道慢騎。</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="腳踏車" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">08:00</div>
+                            <div class="title">埔里遊客中心</div>
+                        </div>
+                    </div>
+                    <div class="desc">集合囉！第一站先租腳踏車（免費三小時），沿著自行車道慢騎。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=埔里遊客中心" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="time">11:00</div>
-                    <div class="title">🥟 取大成黑糖饅頭</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1621235123447-380d5dce6739?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="取餐" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">11:00</div>
+                            <div class="title">取大成黑糖饅頭</div>
+                        </div>
+                    </div>
                     <div class="desc">還完腳踏車，拿熱騰騰的饅頭當點心。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=大城黑糖饅頭" class="btn map-btn" target="_blank">📍 導航</a>
@@ -188,17 +248,27 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="time">12:00</div>
-                    <div class="title">🍲 牛眠里汕頭火鍋 (午餐)</div>
-                    <div class="desc">大人小孩都適合的鮮甜湯頭。</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1626804475297-41607ea0af49?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="火鍋" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">12:00</div>
+                            <div class="title">牛眠里汕頭火鍋</div>
+                        </div>
+                    </div>
+                    <div class="desc">吃午餐！大人小孩都適合的鮮甜湯頭。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=來自牛眠汕頭火鍋" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="time">14:00</div>
-                    <div class="title">📜 廣興紙寮</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="紙寮" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">14:00</div>
+                            <div class="title">廣興紙寮</div>
+                        </div>
+                    </div>
                     <div class="desc">帶小朋友體驗傳統手工造紙與拓印。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=廣興紙寮" class="btn map-btn" target="_blank">📍 導航</a>
@@ -206,8 +276,13 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="time">15:30</div>
-                    <div class="title">🍄 豐年農場採香菇</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1542618999-5e7e801e0d29?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="香菇" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">15:30</div>
+                            <div class="title">豐年農場採香菇</div>
+                        </div>
+                    </div>
                     <div class="desc">提著小籃子親手採香菇，寓教於樂。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=豐年靈芝菇類生態農場" class="btn map-btn" target="_blank">📍 導航</a>
@@ -215,8 +290,13 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="time">17:00</div>
-                    <div class="title">🏡 入住 埔里藏品民宿</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="民宿" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">17:00</div>
+                            <div class="title">入住 埔里藏品民宿</div>
+                        </div>
+                    </div>
                     <div class="desc">卸下行李，梳洗休息。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=埔里藏品民宿" class="btn map-btn" target="_blank">📍 導航</a>
@@ -224,8 +304,13 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="time">晚上</div>
-                    <div class="title">🌙 埔里城觀光夜市 (晚餐/宵夜)</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1533596645318-6df79a490f05?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="夜市" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">晚上</div>
+                            <div class="title">埔里城觀光夜市</div>
+                        </div>
+                    </div>
                     <div class="desc">週末限定大夜市，吃喝玩樂通通有。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=埔里城觀光夜市" class="btn map-btn" target="_blank">📍 導航</a>
@@ -240,35 +325,55 @@
             
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="time">10:00</div>
-                    <div class="title">⛩️ 寶湖宮天地堂地母廟</div>
-                    <div class="desc">退房後前往，建築宏偉、綠色琉璃瓦非常適合拍大合照。</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="地母廟" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">10:00</div>
+                            <div class="title">寶湖宮天地堂地母廟</div>
+                        </div>
+                    </div>
+                    <div class="desc">退房後前往，建築宏偉非常適合拍大合照。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=寶湖宮天地堂地母廟" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="time">11:30</div>
-                    <div class="title">🍦 Feeling 18 (18度C巧克力工房)</div>
-                    <div class="desc">吃義式手工冰淇淋、買伴手禮，午餐可在周邊簡單吃。</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c8a9e9cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="冰淇淋" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">11:30</div>
+                            <div class="title">Feeling 18度C</div>
+                        </div>
+                    </div>
+                    <div class="desc">吃義式手工冰淇淋、買伴手禮。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=18度C巧克力工房" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="time">13:30</div>
-                    <div class="title">🏰 妮娜巧克力夢想城堡</div>
-                    <div class="desc">歐式夢幻城堡，館內可變裝拍照。</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1533154683836-84ea7a0bc310?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="城堡" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">13:30</div>
+                            <div class="title">妮娜巧克力夢想城堡</div>
+                        </div>
+                    </div>
+                    <div class="desc">歐式夢幻城堡，館內可免費變裝拍照。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=妮娜巧克力夢想城堡" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="time">15:30</div>
-                    <div class="title">🎵 敲敲木工房 (KOKOMU)</div>
+                    <div class="item-header">
+                        <img src="https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="木工" class="thumbnail">
+                        <div class="title-group">
+                            <div class="time">15:30</div>
+                            <div class="title">敲敲木工房 (KOKOMU)</div>
+                        </div>
+                    </div>
                     <div class="desc">體驗音樂盒 DIY，帶著滿滿回憶準備返家。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=敲敲木工房" class="btn map-btn" target="_blank">📍 導航</a>
@@ -277,5 +382,30 @@
             </div>
         </div>
     </div>
+
+    <!-- 懸浮返回頂部按鈕 -->
+    <button id="backToTopBtn" onclick="scrollToTop()">⬆️</button>
+
+    <!-- JavaScript 負責控制按鈕的顯示與滑動 -->
+    <script>
+        const topBtn = document.getElementById("backToTopBtn");
+
+        // 當網頁往下滑動超過 300px 時，顯示按鈕
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                topBtn.style.display = "flex";
+            } else {
+                topBtn.style.display = "none";
+            }
+        };
+
+        // 點擊按鈕時，平滑滾動到最上方
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 </html>
