@@ -116,28 +116,8 @@
             box-shadow: 0 0 0 2px rgba(79, 138, 139, 0.2);
         }
 
-        /* 景點縮圖與標題排版 */
-        .item-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .thumbnail {
-            width: 65px;
-            height: 65px;
-            border-radius: 14px;
-            object-fit: cover;
-            margin-right: 15px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-            background-color: #f0f0f0;
-        }
-        .title-group {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .time { font-weight: 700; color: var(--secondary); font-size: 1.05em; margin-bottom: 2px; letter-spacing: 0.5px; }
-        .title { font-weight: 700; font-size: 1.2em; margin: 0; color: var(--text-main); }
+        .time { font-weight: 700; color: var(--secondary); font-size: 1.1em; margin-bottom: 4px; letter-spacing: 0.5px; }
+        .title { font-weight: 700; font-size: 1.2em; margin: 0 0 6px 0; color: var(--text-main); }
         .desc { font-size: 0.95em; color: var(--text-muted); margin: 0 0 12px 0; line-height: 1.6; }
         
         /* 按鈕設計 */
@@ -195,7 +175,7 @@
 </head>
 <body>
     <header class="fade-in">
-        <h1>🍁 埔里兩天一夜親子遊</h1>
+        <h1>😈埔里兩天一夜😈</h1>
         <p>10/3 (六) - 10/4 (日) | 8大3小</p>
     </header>
     
@@ -206,13 +186,8 @@
             
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="饅頭" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">07:00</div>
-                            <div class="title">預訂大成黑糖饅頭</div>
-                        </div>
-                    </div>
+                    <div class="time">07:00</div>
+                    <div class="title">📞 預訂大成黑糖饅頭</div>
                     <div class="desc">記得打電話預留，避免現場賣完。</div>
                     <div class="action-buttons">
                         <a href="tel:0492912898" class="btn call-btn">📞 撥打電話</a>
@@ -220,27 +195,17 @@
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="腳踏車" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">08:00</div>
-                            <div class="title">埔里遊客中心</div>
-                        </div>
-                    </div>
-                    <div class="desc">集合囉！第一站先租腳踏車（免費三小時），沿著自行車道慢騎。</div>
+                    <div class="time">08:00</div>
+                    <div class="title">🚗 埔里遊客中心 (集合)</div>
+                    <div class="desc">第一站先租腳踏車（免費三小時），沿著自行車道慢騎。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=埔里遊客中心" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1621235123447-380d5dce6739?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="取餐" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">11:00</div>
-                            <div class="title">取大成黑糖饅頭</div>
-                        </div>
-                    </div>
+                    <div class="time">11:00</div>
+                    <div class="title">🍞取大成黑糖饅頭</div>
                     <div class="desc">還完腳踏車，拿熱騰騰的饅頭當點心。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=大城黑糖饅頭" class="btn map-btn" target="_blank">📍 導航</a>
@@ -248,27 +213,17 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1626804475297-41607ea0af49?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="火鍋" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">12:00</div>
-                            <div class="title">牛眠里汕頭火鍋</div>
-                        </div>
-                    </div>
-                    <div class="desc">吃午餐！大人小孩都適合的鮮甜湯頭。</div>
+                    <div class="time">12:00</div>
+                    <div class="title">🍲 牛眠里汕頭火鍋 (午餐)</div>
+                    <div class="desc">大人小孩都適合的鮮甜湯頭。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=來自牛眠汕頭火鍋" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="紙寮" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">14:00</div>
-                            <div class="title">廣興紙寮</div>
-                        </div>
-                    </div>
+                    <div class="time">14:00</div>
+                    <div class="title">📜 廣興紙寮</div>
                     <div class="desc">帶小朋友體驗傳統手工造紙與拓印。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=廣興紙寮" class="btn map-btn" target="_blank">📍 導航</a>
@@ -276,13 +231,8 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1542618999-5e7e801e0d29?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="香菇" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">15:30</div>
-                            <div class="title">豐年農場採香菇</div>
-                        </div>
-                    </div>
+                    <div class="time">15:30</div>
+                    <div class="title">🍄 豐年農場採香菇</div>
                     <div class="desc">提著小籃子親手採香菇，寓教於樂。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=豐年靈芝菇類生態農場" class="btn map-btn" target="_blank">📍 導航</a>
@@ -290,13 +240,8 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="民宿" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">17:00</div>
-                            <div class="title">入住 埔里藏品民宿</div>
-                        </div>
-                    </div>
+                    <div class="time">17:00</div>
+                    <div class="title">🏡 入住 埔里藏品民宿</div>
                     <div class="desc">卸下行李，梳洗休息。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=埔里藏品民宿" class="btn map-btn" target="_blank">📍 導航</a>
@@ -304,13 +249,8 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1533596645318-6df79a490f05?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="夜市" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">晚上</div>
-                            <div class="title">埔里城觀光夜市</div>
-                        </div>
-                    </div>
+                    <div class="time">晚上</div>
+                    <div class="title">🌙 埔里城觀光夜市 (晚餐/宵夜)</div>
                     <div class="desc">週末限定大夜市，吃喝玩樂通通有。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=埔里城觀光夜市" class="btn map-btn" target="_blank">📍 導航</a>
@@ -325,13 +265,8 @@
             
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="地母廟" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">10:00</div>
-                            <div class="title">寶湖宮天地堂地母廟</div>
-                        </div>
-                    </div>
+                    <div class="time">10:00</div>
+                    <div class="title">⛩️ 寶湖宮天地堂地母廟</div>
                     <div class="desc">退房後前往，建築宏偉非常適合拍大合照。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=寶湖宮天地堂地母廟" class="btn map-btn" target="_blank">📍 導航</a>
@@ -339,13 +274,8 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1563805042-7684c8a9e9cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="冰淇淋" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">11:30</div>
-                            <div class="title">Feeling 18度C</div>
-                        </div>
-                    </div>
+                    <div class="time">11:30</div>
+                    <div class="title">🍦 Feeling 18 (18度C巧克力工房)</div>
                     <div class="desc">吃義式手工冰淇淋、買伴手禮。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=18度C巧克力工房" class="btn map-btn" target="_blank">📍 導航</a>
@@ -353,30 +283,12 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1533154683836-84ea7a0bc310?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="城堡" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">13:30</div>
-                            <div class="title">妮娜巧克力夢想城堡</div>
-                        </div>
-                    </div>
+                    <div class="time">13:30</div>
+                    <div class="title">🏰 妮娜巧克力夢想城堡</div>
                     <div class="desc">歐式夢幻城堡，館內可免費變裝拍照。</div>
                     <div class="action-buttons">
                         <a href="https://www.google.com/maps/search/?api=1&query=妮娜巧克力夢想城堡" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="item-header">
-                        <img src="https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="木工" class="thumbnail">
-                        <div class="title-group">
-                            <div class="time">15:30</div>
-                            <div class="title">敲敲木工房 (KOKOMU)</div>
-                        </div>
-                    </div>
-                    <div class="desc">體驗音樂盒 DIY，帶著滿滿回憶準備返家。</div>
-                    <div class="action-buttons">
-                        <a href="https://www.google.com/maps/search/?api=1&query=敲敲木工房" class="btn map-btn" target="_blank">📍 導航</a>
                     </div>
                 </div>
             </div>
